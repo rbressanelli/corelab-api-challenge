@@ -9,9 +9,6 @@ class Vehicle {
   name: string
 
   @Column()
-  value: number
-
-  @Column()
   description: string
 
   @Column()
@@ -19,6 +16,12 @@ class Vehicle {
 
   @Column()
   color: string
+
+  @Column({ unique: true })
+  plate: string
+
+  @Column()
+  price: number
 
   @Column({ default: false })
   isFavorite: boolean
