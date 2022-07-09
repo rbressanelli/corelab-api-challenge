@@ -2,6 +2,7 @@ import { Router } from 'express'
 import {
   createVehicleController,
   deleteVehicleController,
+  isFavoriteController,
   listVehiclesController,
   updateVehicleController,
 } from './controllers'
@@ -15,6 +16,8 @@ router.post('/vehicles', validateSchema(createVehicleSchema), createVehicleContr
 router.get('/vehicles', listVehiclesController)
 
 router.patch('/vehicles/:uuid', validateSchema(updateVehicleSchema), updateVehicleController)
+
+router.put('/vehicles/:uuid', isFavoriteController)
 
 router.delete('/vehicles/:uuid', deleteVehicleController)
 

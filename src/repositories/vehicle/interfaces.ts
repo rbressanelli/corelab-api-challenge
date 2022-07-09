@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { DeleteResult } from 'typeorm'
+import { DeleteResult, UpdateResult } from 'typeorm'
 
 interface VehicleTypes {
   uuid: string
@@ -17,7 +17,9 @@ interface VehicleTypes {
 interface VehicleRepoTypes {
   saveVehicle: (vehicle: VehicleTypes) => Promise<VehicleTypes | any>
   listVehicles: () => Promise<VehicleTypes[]>
+  listVehicleById: (id: string) => Promise<VehicleTypes>
   updateVehicle: (vehicle: any, id: string) => Promise<Object>
+  updateFavorite: (id: string) => Promise<UpdateResult>
   deleteVehicle: (id: string) => Promise<DeleteResult>
 }
 

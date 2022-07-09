@@ -13,12 +13,21 @@ class VehicleRepository implements VehicleRepoTypes {
 
   listVehicles = async () => await this.ormRepository.find()
 
+  listVehicleById = async (id: string) => await this.ormRepository.findOne(id)
+
   updateVehicle = async (vehicle: any, id: string) =>
     await this.ormRepository
       .createQueryBuilder()
       .update(Vehicle)
       .set(vehicle)
       .where({ uuid: id })
+      .execute()
+
+  updateFavorite = async (vehicle: any) =>
+    await this.ormRepository
+      .createQueryBuilder()
+      .update(Vehicle)
+      .set({ isFavorite: !vehicle.isFavorite })
       .execute()
 
   deleteVehicle = async (id: string) => await this.ormRepository.delete({ uuid: id })

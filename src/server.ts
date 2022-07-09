@@ -3,7 +3,7 @@ import { createConnection } from 'typeorm'
 import app from './app'
 import dbOptions from './db/ormconfig'
 
-const PORT = process.env.PORT ?? '3000'
+const PORT = process.env.PORT ?? '3001'
 
 createConnection(dbOptions)
   .then(() => {
