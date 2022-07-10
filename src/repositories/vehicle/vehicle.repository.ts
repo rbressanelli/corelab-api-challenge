@@ -28,6 +28,7 @@ class VehicleRepository implements VehicleRepoTypes {
       .createQueryBuilder()
       .update(Vehicle)
       .set({ isFavorite: !vehicle.isFavorite })
+      .where({ uuid: vehicle.uuid })
       .execute()
 
   deleteVehicle = async (id: string) => await this.ormRepository.delete({ uuid: id })
